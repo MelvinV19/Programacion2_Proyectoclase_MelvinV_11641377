@@ -44,11 +44,26 @@ public class Principal extends javax.swing.JFrame {
         jb_proceso = new javax.swing.JButton();
         jb_datos = new javax.swing.JButton();
         jp_flujo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         jd_UML = new javax.swing.JDialog();
         jSeparator1 = new javax.swing.JSeparator();
         pp_menu1 = new javax.swing.JPopupMenu();
         cambiar_color = new javax.swing.JMenuItem();
+        eliminar1 = new javax.swing.JMenuItem();
         pp_menu2 = new javax.swing.JPopupMenu();
+        cambiar_color2 = new javax.swing.JMenuItem();
+        cambiar_texto = new javax.swing.JMenuItem();
+        eliminar2 = new javax.swing.JMenuItem();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -64,15 +79,50 @@ public class Principal extends javax.swing.JFrame {
 
         jb_decision.setIcon(new javax.swing.ImageIcon(getClass().getResource("/if.png"))); // NOI18N
         jb_decision.setToolTipText("");
+        jb_decision.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_decisionMouseClicked(evt);
+            }
+        });
 
         jb_separadorv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/separador.png"))); // NOI18N
+        jb_separadorv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_separadorvMouseClicked(evt);
+            }
+        });
+        jb_separadorv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_separadorvActionPerformed(evt);
+            }
+        });
 
         jb_separadorh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/separadorV.png"))); // NOI18N
+        jb_separadorh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_separadorhMouseClicked(evt);
+            }
+        });
 
         jb_proceso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Proceso.png"))); // NOI18N
         jb_proceso.setToolTipText("");
+        jb_proceso.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_procesoMouseClicked(evt);
+            }
+        });
 
         jb_datos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datos.png"))); // NOI18N
+        jb_datos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_datosMouseClicked(evt);
+            }
+        });
+        jb_datos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_datosActionPerformed(evt);
+            }
+        });
 
         jp_flujo.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -84,8 +134,34 @@ public class Principal extends javax.swing.JFrame {
         );
         jp_flujoLayout.setVerticalGroup(
             jp_flujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 621, Short.MAX_VALUE)
         );
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Procesos");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Conectores");
+
+        jLabel4.setText("Inicio o fin");
+
+        jLabel5.setText("Decision");
+
+        jLabel6.setText("Proceso");
+
+        jLabel7.setText("Datos");
+
+        jLabel8.setText("Conector Horizontal");
+
+        jLabel9.setText("Conector Vertical");
+
+        jMenu1.setText("Archivo");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Guardar");
+        jMenuBar1.add(jMenu2);
+
+        jd_flujos.setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout jd_flujosLayout = new javax.swing.GroupLayout(jd_flujos.getContentPane());
         jd_flujos.getContentPane().setLayout(jd_flujosLayout);
@@ -94,41 +170,84 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jd_flujosLayout.createSequentialGroup()
                 .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_flujosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jb_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_separadorh, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_proceso, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_iniciofin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jb_decision, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_flujosLayout.createSequentialGroup()
+                                .addComponent(jb_proceso, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(jb_datos, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_flujosLayout.createSequentialGroup()
+                                .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jb_iniciofin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jd_flujosLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel4)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jb_decision, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel7)))
+                            .addGroup(jd_flujosLayout.createSequentialGroup()
+                                .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jb_separadorh, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jd_flujosLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel8)))
+                                    .addGroup(jd_flujosLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(jLabel6))
+                                    .addGroup(jd_flujosLayout.createSequentialGroup()
+                                        .addGap(47, 47, 47)
+                                        .addComponent(jb_separadorv, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(41, 41, 41))
                     .addGroup(jd_flujosLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jb_separadorv, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                        .addContainerGap()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jp_flujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
         jd_flujosLayout.setVerticalGroup(
             jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_flujosLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_flujosLayout.createSequentialGroup()
-                        .addComponent(jp_flujo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                .addGap(72, 72, 72)
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jd_flujosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jd_flujosLayout.createSequentialGroup()
                         .addComponent(jb_iniciofin)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_decision)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_proceso, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                        .addComponent(jb_datos)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jb_separadorv)
-                        .addGap(18, 18, 18)
-                        .addComponent(jb_separadorh)
-                        .addGap(81, 81, 81))))
+                        .addComponent(jb_proceso, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_flujosLayout.createSequentialGroup()
+                        .addComponent(jb_decision)
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jb_datos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(35, 35, 35)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jb_separadorh)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addGap(7, 7, 7)
+                .addComponent(jb_separadorv)
+                .addGap(40, 40, 40))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_flujosLayout.createSequentialGroup()
+                .addContainerGap(29, Short.MAX_VALUE)
+                .addComponent(jp_flujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jd_UMLLayout = new javax.swing.GroupLayout(jd_UML.getContentPane());
@@ -150,8 +269,41 @@ public class Principal extends javax.swing.JFrame {
         });
         pp_menu1.add(cambiar_color);
 
+        eliminar1.setText("Eliminar");
+        eliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar1ActionPerformed(evt);
+            }
+        });
+        pp_menu1.add(eliminar1);
+
+        cambiar_color2.setText("Cambiar Color");
+        cambiar_color2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiar_color2ActionPerformed(evt);
+            }
+        });
+        pp_menu2.add(cambiar_color2);
+
+        cambiar_texto.setText("Cambiar Texto");
+        cambiar_texto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiar_textoActionPerformed(evt);
+            }
+        });
+        pp_menu2.add(cambiar_texto);
+
+        eliminar2.setText("Eliminar");
+        eliminar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar2ActionPerformed(evt);
+            }
+        });
+        pp_menu2.add(eliminar2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mini Visio");
+        setForeground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Crear Diagrama de flujos");
@@ -160,7 +312,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 190, 90));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 190, 90));
 
         jButton2.setText("Acerca de");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +320,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 190, 90));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 190, 90));
 
         jButton3.setText("Crear Diagrama UML");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -176,13 +328,14 @@ public class Principal extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 190, 90));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 190, 90));
 
         jButton4.setText("Acerca de");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 510, 190, 90));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 190, 90));
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 0));
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 990, 710));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/1ED.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,71 +356,388 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jb_iniciofinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_iniciofinMouseClicked
-        final JLabel jl_elegido;
-        jl_elegido = new JLabel();
-        jl_elegido.setOpaque(true);
-        jl_elegido.setName("Label" + labelnum);
-        jl_elegido.setBackground(Color.WHITE);
-        labelnum++;
-        jp_flujo.add(jl_elegido);
-        jl_elegido.setLocation(10, 200);
-        jl_elegido.setIcon(new ImageIcon(".\\UML\\in_fin.png"));
-        jl_elegido.setText("");
-        jl_elegido.setMaximumSize(new java.awt.Dimension(100, 100));
-        jl_elegido.setMinimumSize(new Dimension(100, 100));
-        jl_elegido.setLocation(new Point(20, 20));
-        jl_elegido.setPreferredSize(new Dimension(50, 50));
-        jl_elegido.setSize(100, 65);
+        final JLabel jl_iof;
+        jl_iof = new JLabel();
+        jl_iof.setOpaque(true);
+        jl_iof.setName("Label" + iofnum);
+        jl_iof.setBackground(Color.WHITE);
+        iofnum++;
+        jp_flujo.add(jl_iof);
+        jl_iof.setLocation(10, 200);
+        jl_iof.setIcon(new ImageIcon(".\\UML\\in_fin.png"));
+        jl_iof.setText("");
+        jl_iof.setSize(100, 65);
         //agrega un label al panel
 
         //para poder mover un label seleccionado
-        jl_elegido.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        jl_iof.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
-                seleccionado = jl_elegido;
-                jl_elegido.setLocation(jl_elegido.getLocation().x + evt.getX() - jl_elegido.getWidth() / 2,
-                        jl_elegido.getLocation().y + evt.getY() - jl_elegido.getHeight() / 2);
+                seleccionado = jl_iof;
+                jl_iof.setLocation(jl_iof.getLocation().x + evt.getX() - jl_iof.getWidth() / 2,
+                        jl_iof.getLocation().y + evt.getY() - jl_iof.getHeight() / 2);
             }
         });
 
         //para sacar el pop up menu con las opciones que tiene el label seleccionado
-        jl_elegido.addMouseListener(new MouseListener() {
+        jl_iof.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent evt) {
-                seleccionado = jl_elegido;
+                seleccionado = jl_iof;
                 if (evt.isMetaDown()) {
-                    seleccionado = jl_elegido;
+                    seleccionado = jl_iof;
                     pp_menu1.show(evt.getComponent(), evt.getX(), evt.getY());
                 }
             }
-
+            
             @Override
             public void mousePressed(MouseEvent e) {
-                seleccionado = jl_elegido;
+                seleccionado = jl_iof;
             }
-
+            
             @Override
             public void mouseReleased(MouseEvent e) {
-                seleccionado = jl_elegido;
+                seleccionado = jl_iof;
             }
-
+            
             @Override
             public void mouseEntered(MouseEvent e) {
-                seleccionado = jl_elegido;
+                seleccionado = jl_iof;
             }
-
+            
             @Override
             public void mouseExited(MouseEvent e) {
-                seleccionado = jl_elegido;
+                seleccionado = jl_iof;
             }
         });
-
+        
 
     }//GEN-LAST:event_jb_iniciofinMouseClicked
 
     private void cambiar_colorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiar_colorActionPerformed
-
+        
         seleccionado.setBackground(JColorChooser.showDialog(jd_flujos, "Color?", Color.yellow));
 
     }//GEN-LAST:event_cambiar_colorActionPerformed
+
+    private void jb_decisionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_decisionMouseClicked
+        final JLabel jl_if;
+        jl_if = new JLabel();
+        jl_if.setOpaque(true);
+        jl_if.setName("Label" + ifnum);
+        jl_if.setBackground(Color.WHITE);
+        ifnum++;
+        jp_flujo.add(jl_if);
+        jl_if.setLocation(10, 200);
+        jl_if.setIcon(new ImageIcon(".\\UML\\if.png"));
+        jl_if.setText("");
+        jl_if.setSize(100, 65);
+        //agrega un label al panel
+
+        //para poder mover un label seleccionado
+        jl_if.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                seleccionado = jl_if;
+                jl_if.setLocation(jl_if.getLocation().x + evt.getX() - jl_if.getWidth() / 2,
+                        jl_if.getLocation().y + evt.getY() - jl_if.getHeight() / 2);
+            }
+        });
+
+        //para sacar el pop up menu con las opciones que tiene el label seleccionado
+        jl_if.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                seleccionado = jl_if;
+                if (evt.isMetaDown()) {
+                    seleccionado = jl_if;
+                    pp_menu2.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+                seleccionado = jl_if;
+            }
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                seleccionado = jl_if;
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                seleccionado = jl_if;
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                seleccionado = jl_if;
+            }
+        });
+    }//GEN-LAST:event_jb_decisionMouseClicked
+
+    private void cambiar_color2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiar_color2ActionPerformed
+        seleccionado.setBackground(JColorChooser.showDialog(jd_flujos, "Color?", Color.yellow));
+    }//GEN-LAST:event_cambiar_color2ActionPerformed
+
+    private void cambiar_textoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiar_textoActionPerformed
+        
+        String texto;
+        texto = JOptionPane.showInputDialog(jd_flujos, "Ingrese el texto");
+        seleccionado.setText(texto);
+        System.out.println(seleccionado.getText());
+    }//GEN-LAST:event_cambiar_textoActionPerformed
+
+    private void jb_procesoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_procesoMouseClicked
+        final JLabel jl_proceso;
+        jl_proceso = new JLabel();
+        jl_proceso.setOpaque(true);
+        jl_proceso.setName("Label" + pronum);
+        jl_proceso.setBackground(Color.WHITE);
+        pronum++;
+        jp_flujo.add(jl_proceso);
+        jl_proceso.setLocation(10, 200);
+        jl_proceso.setIcon(new ImageIcon(".\\UML\\Proceso.png"));
+        jl_proceso.setText("");
+        jl_proceso.setSize(100, 65);
+        //agrega un label al panel
+
+        //para poder mover un label seleccionado
+        jl_proceso.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                seleccionado = jl_proceso;
+                jl_proceso.setLocation(jl_proceso.getLocation().x + evt.getX() - jl_proceso.getWidth() / 2,
+                        jl_proceso.getLocation().y + evt.getY() - jl_proceso.getHeight() / 2);
+            }
+        });
+
+        //para sacar el pop up menu con las opciones que tiene el label seleccionado
+        jl_proceso.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                seleccionado = jl_proceso;
+                if (evt.isMetaDown()) {
+                    seleccionado = jl_proceso;
+                    pp_menu2.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+                seleccionado = jl_proceso;
+            }
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                seleccionado = jl_proceso;
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                seleccionado = jl_proceso;
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                seleccionado = jl_proceso;
+            }
+        });
+    }//GEN-LAST:event_jb_procesoMouseClicked
+
+    private void jb_separadorvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_separadorvMouseClicked
+        final JLabel jl_separadorv;
+        jl_separadorv = new JLabel();
+        jl_separadorv.setOpaque(true);
+        jl_separadorv.setName("Label" + separadorvnum);
+        jl_separadorv.setBackground(Color.WHITE);
+        separadorvnum++;
+        jp_flujo.add(jl_separadorv);
+        jl_separadorv.setLocation(10, 200);
+        jl_separadorv.setIcon(new ImageIcon(".\\UML\\separador.png"));
+        jl_separadorv.setText("");
+        jl_separadorv.setSize(7, 65);
+        //agrega un label al panel
+
+        //para poder mover un label seleccionado
+        jl_separadorv.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                seleccionado = jl_separadorv;
+                jl_separadorv.setLocation(jl_separadorv.getLocation().x + evt.getX() - jl_separadorv.getWidth() / 2,
+                        jl_separadorv.getLocation().y + evt.getY() - jl_separadorv.getHeight() / 2);
+            }
+        });
+
+        //para sacar el pop up menu con las opciones que tiene el label seleccionado
+        jl_separadorv.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                seleccionado = jl_separadorv;
+                if (evt.isMetaDown()) {
+                    seleccionado = jl_separadorv;
+                    pp_menu1.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+                seleccionado = jl_separadorv;
+            }
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                seleccionado = jl_separadorv;
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                seleccionado = jl_separadorv;
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                seleccionado = jl_separadorv;
+            }
+        });
+    }//GEN-LAST:event_jb_separadorvMouseClicked
+
+    private void jb_separadorhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_separadorhMouseClicked
+        final JLabel jl_separador;
+        jl_separador = new JLabel();
+        jl_separador.setOpaque(true);
+        jl_separador.setName("Label" + separadornum);
+        jl_separador.setBackground(Color.WHITE);
+        separadornum++;
+        jp_flujo.add(jl_separador);
+        jl_separador.setLocation(10, 200);
+        jl_separador.setIcon(new ImageIcon(".\\UML\\separadorV.png"));
+        jl_separador.setText("");
+        jl_separador.setSize(65, 7);
+        //agrega un label al panel
+
+        //para poder mover un label seleccionado
+        jl_separador.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                seleccionado = jl_separador;
+                jl_separador.setLocation(jl_separador.getLocation().x + evt.getX() - jl_separador.getWidth() / 2,
+                        jl_separador.getLocation().y + evt.getY() - jl_separador.getHeight() / 2);
+            }
+        });
+
+        //para sacar el pop up menu con las opciones que tiene el label seleccionado
+        jl_separador.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                seleccionado = jl_separador;
+                if (evt.isMetaDown()) {
+                    seleccionado = jl_separador;
+                    pp_menu1.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+                seleccionado = jl_separador;
+            }
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                seleccionado = jl_separador;
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                seleccionado = jl_separador;
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                seleccionado = jl_separador;
+            }
+        });
+    }//GEN-LAST:event_jb_separadorhMouseClicked
+
+    private void jb_datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_datosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_datosActionPerformed
+
+    private void eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar1ActionPerformed
+        try {
+            int resp = JOptionPane.showConfirmDialog(jd_UML, "Desea eliminar este elemento?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (resp == JOptionPane.OK_OPTION) {
+                jp_flujo.remove(seleccionado);
+                jp_flujo.repaint();
+            }
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_eliminar1ActionPerformed
+
+    private void eliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar2ActionPerformed
+        try {
+            int respuesta = JOptionPane.showConfirmDialog(jd_UML, "Desea eliminar este elemento?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (respuesta == JOptionPane.OK_OPTION) {
+                jp_flujo.remove(seleccionado);
+                jp_flujo.repaint();
+            }
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_eliminar2ActionPerformed
+
+    private void jb_separadorvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_separadorvActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jb_separadorvActionPerformed
+
+    private void jb_datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_datosMouseClicked
+        final JLabel jl_datos;
+        jl_datos = new JLabel();
+        jl_datos.setOpaque(true);
+        jl_datos.setName("Label" + datosnum);
+        jl_datos.setBackground(Color.WHITE);
+        datosnum++;
+        jp_flujo.add(jl_datos);
+        jl_datos.setLocation(10, 200);
+        jl_datos.setIcon(new ImageIcon(".\\UML\\datos.png"));
+        jl_datos.setText("");
+        jl_datos.setSize(100, 65);
+        //agrega un label al panel
+
+        //para poder mover un label seleccionado
+        jl_datos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                seleccionado = jl_datos;
+                jl_datos.setLocation(jl_datos.getLocation().x + evt.getX() - jl_datos.getWidth() / 2,
+                        jl_datos.getLocation().y + evt.getY() - jl_datos.getHeight() / 2);
+            }
+        });
+
+        //para sacar el pop up menu con las opciones que tiene el label seleccionado
+        jl_datos.addMouseListener(new MouseListener() {
+            public void mouseClicked(MouseEvent evt) {
+                seleccionado = jl_datos;
+                if (evt.isMetaDown()) {
+                    seleccionado = jl_datos;
+                    pp_menu2.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+            
+            @Override
+            public void mousePressed(MouseEvent e) {
+                seleccionado = jl_datos;
+            }
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                seleccionado = jl_datos;
+            }
+            
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                seleccionado = jl_datos;
+            }
+            
+            @Override
+            public void mouseExited(MouseEvent e) {
+                seleccionado = jl_datos;
+            }
+        });
+    }//GEN-LAST:event_jb_datosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -306,11 +776,26 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem cambiar_color;
+    private javax.swing.JMenuItem cambiar_color2;
+    private javax.swing.JMenuItem cambiar_texto;
+    private javax.swing.JMenuItem eliminar1;
+    private javax.swing.JMenuItem eliminar2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jb_datos;
     private javax.swing.JButton jb_decision;
@@ -324,6 +809,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu pp_menu1;
     private javax.swing.JPopupMenu pp_menu2;
     // End of variables declaration//GEN-END:variables
-    int labelnum = 0;
+    int iofnum = 0;
+    int ifnum = 0;
+    int pronum = 0;
+    int separadorvnum = 0;
+    int separadornum = 0;
+    int datosnum = 0;
     JLabel seleccionado = null;
 }
