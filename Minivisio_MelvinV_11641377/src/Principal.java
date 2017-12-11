@@ -1,32 +1,44 @@
 
+import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
-import java.awt.Point;
-import java.awt.Toolkit;
+import java.awt.Panel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.Line;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -44,7 +56,6 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-
         jb_generarcodigo.setEnabled(false);
         jMenu2.setEnabled(false);
         jButton1.setEnabled(false);
@@ -52,15 +63,9 @@ public class Principal extends javax.swing.JFrame {
         dlm = new DefaultListModel();
         lista.setModel(dlm);
         cargarcomponentes();
-    }
+        jMenuItem2.setEnabled(false);
+        jMenuItem9.setEnabled(false);
 
-    private void cargarcomponentes() {
-        for (int i = 10; i <= 30; i++) {
-            combo.addItem(i);
-        }
-        for (String fuente : fuentes) {
-            dlm.addElement(fuente);
-        }
     }
 
     /**
@@ -97,8 +102,19 @@ public class Principal extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jd_UML = new javax.swing.JDialog();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jp_uml = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JSeparator();
         pp_menu1 = new javax.swing.JPopupMenu();
         cambiar_color = new javax.swing.JMenuItem();
@@ -134,6 +150,26 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         lista = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
+        jd_atributos = new javax.swing.JDialog();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        rb_protected = new javax.swing.JRadioButton();
+        rb_private = new javax.swing.JRadioButton();
+        rb_public = new javax.swing.JRadioButton();
+        rb_int = new javax.swing.JRadioButton();
+        rb_double = new javax.swing.JRadioButton();
+        rb_string = new javax.swing.JRadioButton();
+        jButton5 = new javax.swing.JButton();
+        tf_atributo = new javax.swing.JTextField();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        bg_enca = new javax.swing.ButtonGroup();
+        bg_tipo = new javax.swing.ButtonGroup();
+        pp_menu3 = new javax.swing.JPopupMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem8 = new javax.swing.JMenuItem();
         panel_menu = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -251,7 +287,7 @@ public class Principal extends javax.swing.JFrame {
                 jb_generarcodigoMouseClicked(evt);
             }
         });
-        jd_flujos.getContentPane().add(jb_generarcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 550, -1, -1));
+        jd_flujos.getContentPane().add(jb_generarcodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, -1, -1));
 
         jButton1.setText("Ver Codigo Generado");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -264,7 +300,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jd_flujos.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, -1, -1));
+        jd_flujos.getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, -1, -1));
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo blanco.jpg"))); // NOI18N
         jd_flujos.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 660));
@@ -272,13 +308,18 @@ public class Principal extends javax.swing.JFrame {
         jMenu1.setText("Archivo");
 
         jMenuItem3.setText("Cargar Diagrama");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem3);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Guardar");
 
-        jMenuItem1.setText("Guardar como JPG");
+        jMenuItem1.setText("Guardar como PNG");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -287,31 +328,99 @@ public class Principal extends javax.swing.JFrame {
         jMenu2.add(jMenuItem1);
 
         jMenuItem2.setText("Guardar como PDF");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
+
+        jMenuItem4.setText("Guardar como Flujo");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
 
         jd_flujos.setJMenuBar(jMenuBar1);
 
-        jLabel24.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
-        jLabel24.setText("Prueba");
+        jd_UML.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jd_UMLLayout = new javax.swing.GroupLayout(jd_UML.getContentPane());
-        jd_UML.getContentPane().setLayout(jd_UMLLayout);
-        jd_UMLLayout.setHorizontalGroup(
-            jd_UMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_UMLLayout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addComponent(jLabel24)
-                .addContainerGap(165, Short.MAX_VALUE))
+        jButton3.setText("Crear Clase");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+        jd_UML.getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, 80));
+
+        jButton4.setText("Generar Codigo");
+        jd_UML.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 140, 80));
+
+        jp_uml.setBackground(new java.awt.Color(255, 255, 255));
+        jp_uml.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jp_umlLayout = new javax.swing.GroupLayout(jp_uml);
+        jp_uml.setLayout(jp_umlLayout);
+        jp_umlLayout.setHorizontalGroup(
+            jp_umlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 768, Short.MAX_VALUE)
         );
-        jd_UMLLayout.setVerticalGroup(
-            jd_UMLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_UMLLayout.createSequentialGroup()
-                .addGap(143, 143, 143)
-                .addComponent(jLabel24)
-                .addContainerGap(261, Short.MAX_VALUE))
+        jp_umlLayout.setVerticalGroup(
+            jp_umlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 658, Short.MAX_VALUE)
         );
+
+        jd_UML.getContentPane().add(jp_uml, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo blanco.jpg"))); // NOI18N
+        jd_UML.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 700));
+
+        jMenu3.setText("Archivo");
+
+        jMenuItem11.setText("Cargar UML");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem11);
+
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Guardar");
+
+        jMenuItem7.setText("Guardar como PNG");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem7);
+
+        jMenuItem9.setText("Guardar como PDF");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem9);
+
+        jMenuItem10.setText("Guardar como UML");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem10);
+
+        jMenuBar2.add(jMenu4);
+
+        jd_UML.setJMenuBar(jMenuBar2);
 
         cambiar_color.setText("Cambiar Color");
         cambiar_color.addActionListener(new java.awt.event.ActionListener() {
@@ -584,6 +693,91 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jd_atributos.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel29.setText("Encapsulamiento");
+        jd_atributos.getContentPane().add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 130, -1));
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel32.setText("Creacion de Atributo");
+        jd_atributos.getContentPane().add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 200, -1));
+
+        bg_enca.add(rb_protected);
+        rb_protected.setText("Protected");
+        jd_atributos.getContentPane().add(rb_protected, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 80, -1));
+
+        bg_enca.add(rb_private);
+        rb_private.setText("Private");
+        jd_atributos.getContentPane().add(rb_private, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, -1, -1));
+
+        bg_enca.add(rb_public);
+        rb_public.setSelected(true);
+        rb_public.setText("Public");
+        jd_atributos.getContentPane().add(rb_public, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 70, -1));
+
+        bg_tipo.add(rb_int);
+        rb_int.setSelected(true);
+        rb_int.setText("int");
+        jd_atributos.getContentPane().add(rb_int, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 60, -1));
+
+        bg_tipo.add(rb_double);
+        rb_double.setText("Double");
+        jd_atributos.getContentPane().add(rb_double, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 60, -1));
+
+        bg_tipo.add(rb_string);
+        rb_string.setText("String");
+        rb_string.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_stringActionPerformed(evt);
+            }
+        });
+        jd_atributos.getContentPane().add(rb_string, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 80, -1));
+
+        jButton5.setText("Crear Atributo");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jd_atributos.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 160, 90));
+        jd_atributos.getContentPane().add(tf_atributo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, 280, -1));
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel30.setText("Tipo");
+        jd_atributos.getContentPane().add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 60, -1));
+
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel31.setText("Nombre Atributo");
+        jd_atributos.getContentPane().add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 130, -1));
+
+        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo blanco.jpg"))); // NOI18N
+        jd_atributos.getContentPane().add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 695, 590));
+
+        jMenuItem5.setText("Agregar Atributo");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        pp_menu3.add(jMenuItem5);
+
+        jMenuItem6.setText("Cambiar Color");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
+        pp_menu3.add(jMenuItem6);
+
+        jMenuItem8.setText("Eliminar");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem8ActionPerformed(evt);
+            }
+        });
+        pp_menu3.add(jMenuItem8);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mini Visio");
@@ -1118,7 +1312,7 @@ public class Principal extends javax.swing.JFrame {
                 }
 
             }
-            if (label.getName().contains("proceso") && !label.getText().contains("\"\"") && label.getText().contains("imprimir")) {
+            if (label.getName().contains("proceso") && !label.getText().contains("\"") && label.getText().contains("imprimir")) {
                 try {
                     fw = new FileWriter(archivo, true);
                     bw = new BufferedWriter(fw);
@@ -1207,11 +1401,18 @@ public class Principal extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        jButton1.setEnabled(true);
+
         tp_codigo.removeAll();
         String codigo = getArchivo("./archivo.txt");
         tp_codigo.setText(codigo);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JOptionPane.showMessageDialog(jd_flujos, "Codigo generado exitosamente");
+        jButton1.setEnabled(true);
+
 
     }//GEN-LAST:event_jb_generarcodigoMouseClicked
 
@@ -1223,16 +1424,25 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Dimension d = jp_flujo.getSize();
-        BufferedImage image = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);
-        jp_flujo.paint(image.getGraphics());
-        try {
-            ImageIO.write(image, "png", new File("fichero"+contpng+".png"));
-        } catch (IOException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showSaveDialog(jd_flujos);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagen png", "png");
+        jfc.addChoosableFileFilter(filtro);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            Dimension d = jp_flujo.getSize();
+            BufferedImage image = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);
+            jp_flujo.paint(image.getGraphics());
+            try {
+                ImageIO.write(image, "png", new File(jfc.getSelectedFile().getPath() + ".png"));
+                ruta = jfc.getSelectedFile().getPath();
+                System.out.println(ruta);
+
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(jd_flujos, "Imagen guardada exitosamente");
         }
-        JOptionPane.showMessageDialog(jd_flujos,"Imagen guardada exitosamente");
-        contpng++;
+        jMenuItem2.setEnabled(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void cambiar_fuenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiar_fuenteActionPerformed
@@ -1283,6 +1493,328 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showSaveDialog(jd_flujos);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            try {
+                System.out.println(ruta);
+                Document document = new Document(PageSize.A4);
+                PdfWriter.getInstance(document, new FileOutputStream(jfc.getSelectedFile().getPath() + ".pdf"));
+                document.open();
+                Image imagen = Image.getInstance(ruta + ".png");
+                imagen.scaleAbsolute(500, 500);
+                imagen.setAlignment(Element.ALIGN_CENTER);
+                document.add(imagen);
+                document.close();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException | IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        JOptionPane.showMessageDialog(jd_flujos, "PDF guardado correctamente");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showSaveDialog(jd_flujos);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            administrarFlujos af = new administrarFlujos(jfc.getSelectedFile().getPath() + ".flujo");
+            for (JLabel label : labels) {
+                af.getLabels().add(label);
+            }
+            af.cargarArchivo();
+            try {
+                af.escribirArchivo();
+            } catch (IOException ex) {
+
+            }
+            JOptionPane.showMessageDialog(jd_flujos, "Flujo guardado exitosamente");
+        }
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showOpenDialog(jd_flujos);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            administrarFlujos af = new administrarFlujos(jfc.getSelectedFile().getPath());
+            af.cargarArchivo();
+            for (final JLabel label : af.getLabels()) {
+                labels.add(label);
+                jp_flujo.add(label);
+                //para poder mover un label seleccionado
+                label.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        seleccionado = label;
+                        label.setLocation(label.getLocation().x + evt.getX() - label.getWidth() / 2,
+                                label.getLocation().y + evt.getY() - label.getHeight() / 2);
+                    }
+                });
+
+                //para sacar el pop up menu con las opciones que tiene el label seleccionado
+                label.addMouseListener(new MouseListener() {
+                    public void mouseClicked(MouseEvent evt) {
+                        seleccionado = label;
+                        if (evt.isMetaDown()) {
+                            seleccionado = label;
+                            pp_menu2.show(evt.getComponent(), evt.getX(), evt.getY());
+                        }
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        seleccionado = label;
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        seleccionado = label;
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        seleccionado = label;
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        seleccionado = label;
+                    }
+                });
+            }
+            JOptionPane.showMessageDialog(jd_flujos, "Flujo cargado exitosamente");
+            jp_flujo.repaint();
+        }
+        jb_generarcodigo.setEnabled(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+
+        String nombre = JOptionPane.showInputDialog("Ingrese nombre de la clase");
+        final JPanel clase;
+        clase = new JPanel();
+        clase.setBackground(Color.BLUE);
+        JLabel titulo = new JLabel();
+        titulo.setText(nombre);
+        clase.add(titulo);
+        jp_uml.add(clase);
+        titulo.setLocation(10, 100);
+        titulo.setOpaque(true);
+        titulo.setBackground(Color.WHITE);
+        titulo.setHorizontalTextPosition(SwingConstants.CENTER);
+        titulo.setSize(100, 65);
+        clase.setLocation(10, 200);
+        clase.setSize(150, 150);
+        claseCreada cc = new claseCreada(clase);
+        clases.add(cc);
+        cc.getLista().add(titulo);
+        selec = clase;
+
+       
+        clase.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                selec = clase;
+                selec.setLocation(selec.getLocation().x + evt.getX() - selec.getWidth() / 2,
+                        selec.getLocation().y + evt.getY() - selec.getHeight() / 2);
+            }
+        });
+
+        selec.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent evt) {
+                selec = clase;
+                if (evt.isMetaDown()) {
+                    selec = clase;
+                    pp_menu3.show(evt.getComponent(), evt.getX(), evt.getY());
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                selec = clase;
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                selec = clase;
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                selec = clase;
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                selec = clase;
+            }
+        });
+
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void rb_stringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_stringActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb_stringActionPerformed
+
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        try {
+            int resp = JOptionPane.showConfirmDialog(jd_UML, "Desea eliminar este elemento?", "Confirm", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (resp == JOptionPane.OK_OPTION) {
+                for (claseCreada clase : clases) {
+                    if (clase.getClase().equals(selec)) {
+                        clases.remove(clase);
+                        jp_uml.repaint();
+                        jp_uml.remove(selec);
+                    }
+                }
+
+            }
+
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        selec.setBackground(JColorChooser.showDialog(jd_UML, "Color?", Color.yellow));
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        jd_atributos.pack();
+        jd_atributos.setModal(true);
+        jd_atributos.setLocationRelativeTo(jd_UML);
+        jd_atributos.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        String enca = "";
+        String nombre = "";
+        String tipo = "";
+        if (rb_public.isSelected()) {
+            enca = "public";
+        }
+        if (rb_private.isSelected()) {
+            enca = "private";
+        }
+        if (rb_protected.isSelected()) {
+            enca = "protected";
+        }
+        if (rb_double.isSelected()) {
+            tipo = "double";
+        }
+        if (rb_int.isSelected()) {
+            tipo = "int";
+        }
+        if (rb_string.isSelected()) {
+            tipo = "String";
+        }
+        nombre = tf_atributo.getText();
+        JLabel atributo = new JLabel();
+        contpos1 += 100;
+        atributo.setText(enca + " " + tipo + " " + nombre);
+        atributo.setLocation(selec.getX(), selec.getY() + contpos1);
+        atributo.setOpaque(true);
+        atributo.setBackground(Color.WHITE);
+        atributo.setHorizontalTextPosition(SwingConstants.CENTER);
+        atributo.setSize(100, 65);
+        for (claseCreada c : clases) {
+            if (c.getClase().equals(selec)) {
+                selec.add(atributo);
+                c.getLista().add(atributo);
+
+            }
+        }
+        selec.repaint();
+        jp_uml.repaint();
+        jd_atributos.dispose();
+        tf_atributo.setText("");
+        JOptionPane.showMessageDialog(jd_UML, "Atributo agregado correctamente");
+
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showSaveDialog(jd_UML);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            try {
+                System.out.println(ruta);
+                Document document = new Document(PageSize.A4);
+                PdfWriter.getInstance(document, new FileOutputStream(jfc.getSelectedFile().getPath() + ".pdf"));
+                document.open();
+                Image imagen = Image.getInstance(ruta + ".png");
+                imagen.scaleAbsolute(500, 500);
+                imagen.setAlignment(Element.ALIGN_CENTER);
+                document.add(imagen);
+                document.close();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException | IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        JOptionPane.showMessageDialog(jd_UML, "PDF guardado correctamente");
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showSaveDialog(jd_UML);
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagen png", "png");
+        jfc.addChoosableFileFilter(filtro);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            Dimension d = jp_uml.getSize();
+            BufferedImage image = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);
+            jp_uml.paint(image.getGraphics());
+            try {
+                ImageIO.write(image, "png", new File(jfc.getSelectedFile().getPath() + ".png"));
+                ruta = jfc.getSelectedFile().getPath();
+                System.out.println(ruta);
+
+            } catch (IOException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(jd_flujos, "Imagen guardada exitosamente");
+        }
+        jMenuItem9.setEnabled(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showSaveDialog(jd_UML);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            administrarUML au = new administrarUML(jfc.getSelectedFile().getPath() + ".UML");
+            for (claseCreada clase : clases) {
+                au.getLabels().add(clase);
+            }
+            au.cargarArchivo();
+            try {
+                au.escribirArchivo();
+            } catch (IOException ex) {
+
+            }
+            JOptionPane.showMessageDialog(jd_UML, "UML guardado exitosamente");
+        }
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        JFileChooser jfc = new JFileChooser();
+        int op = jfc.showOpenDialog(jd_flujos);
+        if (op == JFileChooser.APPROVE_OPTION) {
+            administrarUML au = new administrarUML(jfc.getSelectedFile().getPath());
+            au.cargarArchivo();
+            for (claseCreada clase : au.getLabels()) {
+                clases.add(clase);
+                
+            }
+            
+            JOptionPane.showMessageDialog(jd_UML, "UML cargado exitosamente");
+        }
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1319,6 +1851,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bg_enca;
+    private javax.swing.ButtonGroup bg_tipo;
     private javax.swing.JMenuItem cambiar_color;
     private javax.swing.JMenuItem cambiar_color2;
     private javax.swing.JMenuItem cambiar_fuente;
@@ -1329,6 +1863,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem eliminar2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1349,7 +1886,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1358,10 +1900,21 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1377,16 +1930,26 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jb_separadorh;
     private javax.swing.JButton jb_separadorv;
     private javax.swing.JDialog jd_UML;
+    private javax.swing.JDialog jd_atributos;
     private javax.swing.JDialog jd_flujos;
     private javax.swing.JDialog jd_fuente;
     private javax.swing.JDialog jd_vercodigo;
     private javax.swing.JPanel jp_flujo;
+    private javax.swing.JPanel jp_uml;
     private javax.swing.JList<String> lista;
     private javax.swing.JPanel panel_menu;
     private javax.swing.JPopupMenu pp_menu1;
     private javax.swing.JPopupMenu pp_menu2;
+    private javax.swing.JPopupMenu pp_menu3;
+    private javax.swing.JRadioButton rb_double;
+    private javax.swing.JRadioButton rb_int;
+    private javax.swing.JRadioButton rb_private;
+    private javax.swing.JRadioButton rb_protected;
+    private javax.swing.JRadioButton rb_public;
+    private javax.swing.JRadioButton rb_string;
     private javax.swing.JLabel texto;
-    private javax.swing.JTextPane tp_codigo;
+    private javax.swing.JTextField tf_atributo;
+    public javax.swing.JTextPane tp_codigo;
     // End of variables declaration//GEN-END:variables
     int iofnum = 0;
     int ifnum = 0;
@@ -1395,11 +1958,15 @@ public class Principal extends javax.swing.JFrame {
     int separadornum = 0;
     int datosnum = 0;
     JLabel seleccionado = null;
+    JPanel selec = null;
     ArrayList<JLabel> labels = new ArrayList();
+    ArrayList<claseCreada> clases = new ArrayList();
+    int contclase = 0;
     ArrayList palabras = new ArrayList();
     DefaultListModel dlm;
     String[] fuentes;
-    int contpng=1;
+    String ruta;
+    int contpos1 = 0;
 
     //metodos
     public String getArchivo(String ruta) {
@@ -1423,6 +1990,15 @@ public class Principal extends javax.swing.JFrame {
             }
         }
         return contenido;
+    }
+
+    private void cargarcomponentes() {
+        for (int i = 10; i <= 30; i++) {
+            combo.addItem(i);
+        }
+        for (String fuente : fuentes) {
+            dlm.addElement(fuente);
+        }
     }
 
 }
