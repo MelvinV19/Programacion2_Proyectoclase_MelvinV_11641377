@@ -31,6 +31,11 @@ public class claseCreada {
     public void setLista(ArrayList<JLabel> lista) {
         this.lista = lista;
     }
+
+    @Override
+    public String toString() {
+        return  lista.get(0).getText();
+    }
     
     
 }

@@ -1,0 +1,50 @@
+#include<iostream>
+#include <string>
+ifndef PERSONA_CPP
+#define PERSONA_CPP
+using namespace std;
+class Persona{
+ private:
+   double peso;
+ protected:
+   string nombre;
+ public:
+   int edad;
+  Persona(){
+     edad=1;
+     peso=1;
+     nombre="Hola";
+  }
+  Persona(int valor,double decimal,string cadena){
+      edad=valor;
+      peso=decimal;
+      nombre=cadena;
+ }
+}
+----------------------------------------------------------------
+
+#include<iostream>
+#include <string>
+#ifndef CARRO_CPP
+#define CARRO_CPP
+using namespace std;
+class Carro{
+ private:
+   double velocidad;
+ protected:
+   string marca;
+ public:
+   int id;
+  Carro(){
+     id=1;
+     velocidad=1;
+     marca="Hola";
+  }
+  Carro(int valor,double decimal,string cadena){
+      id=valor;
+      velocidad=decimal;
+      marca=cadena;
+ }
+}
+----------------------------------------------------------------
+

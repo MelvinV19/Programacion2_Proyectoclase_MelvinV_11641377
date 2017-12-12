@@ -6,13 +6,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-public class administrarUML {
-    ArrayList<claseCreada>clases=new ArrayList();
+public class administrarUML implements Serializable{
+   ArrayList<claseCreada>clases=new ArrayList();
    File archivo=null;
    
 
@@ -20,11 +21,11 @@ public class administrarUML {
         archivo=new File(path);
     }
 
-    public ArrayList<claseCreada> getLabels() {
+    public ArrayList<claseCreada> getClases() {
         return clases;
     }
 
-    public void setLabels(ArrayList<claseCreada> clases) {
+    public void setClases(ArrayList<claseCreada> clases) {
         this.clases = clases;
     }
 
