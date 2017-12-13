@@ -39,6 +39,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.Highlighter;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -77,9 +78,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
         jb_generarcodigo = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -110,6 +115,7 @@ public class Principal extends javax.swing.JFrame {
         cambiar_texto = new javax.swing.JMenuItem();
         cambiar_fuente = new javax.swing.JMenuItem();
         eliminar2 = new javax.swing.JMenuItem();
+        copiar1 = new javax.swing.JMenuItem();
         jPanel2 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -167,6 +173,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
         jd_herencia = new javax.swing.JDialog();
         jLabel33 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -178,6 +185,10 @@ public class Principal extends javax.swing.JFrame {
         jd_vercodigo1 = new javax.swing.JDialog();
         jScrollPane5 = new javax.swing.JScrollPane();
         tp_codigo1 = new javax.swing.JTextPane();
+        pp_menu4 = new javax.swing.JPopupMenu();
+        jMenuItem20 = new javax.swing.JMenuItem();
+        pp_menu5 = new javax.swing.JPopupMenu();
+        jMenuItem17 = new javax.swing.JMenuItem();
         panel_menu = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
@@ -249,6 +260,11 @@ public class Principal extends javax.swing.JFrame {
 
         jp_flujo.setBackground(new java.awt.Color(255, 255, 255));
         jp_flujo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jp_flujo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_flujoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_flujoLayout = new javax.swing.GroupLayout(jp_flujo);
         jp_flujo.setLayout(jp_flujoLayout);
@@ -289,6 +305,14 @@ public class Principal extends javax.swing.JFrame {
         jLabel9.setText("Conector Vertical");
         jd_flujos.getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 491, -1, -1));
 
+        jButton12.setText("Limpiar ");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+        jd_flujos.getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, 79, -1));
+
         jb_generarcodigo.setText("Generar Codigo");
         jb_generarcodigo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -312,6 +336,15 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo blanco.jpg"))); // NOI18N
         jd_flujos.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 660));
+
+        jButton4.setText("jButton4");
+        jd_flujos.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-32658, -32256, -1, -1));
+
+        jButton10.setText("jButton10");
+        jd_flujos.getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(-32651, -32252, -1, -1));
+
+        jButton11.setText("jButton11");
+        jd_flujos.getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-32596, -32361, -1, -1));
 
         jMenu1.setText("Archivo");
 
@@ -388,6 +421,11 @@ public class Principal extends javax.swing.JFrame {
 
         jp_uml.setBackground(new java.awt.Color(255, 255, 255));
         jp_uml.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jp_uml.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jp_umlMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_umlLayout = new javax.swing.GroupLayout(jp_uml);
         jp_uml.setLayout(jp_umlLayout);
@@ -503,6 +541,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pp_menu2.add(eliminar2);
+
+        copiar1.setText("copiar");
+        copiar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                copiar1ActionPerformed(evt);
+            }
+        });
+        pp_menu2.add(copiar1);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(525, 520));
@@ -880,6 +926,14 @@ public class Principal extends javax.swing.JFrame {
         });
         pp_menu3.add(jMenuItem8);
 
+        jMenuItem13.setText("Copiar");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
+        pp_menu3.add(jMenuItem13);
+
         jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel33.setText("Clase Padre");
 
@@ -949,6 +1003,22 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenuItem20.setText("Pegar");
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
+        pp_menu4.add(jMenuItem20);
+
+        jMenuItem17.setText("Pegar");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        pp_menu5.add(jMenuItem17);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mini Visio");
         setForeground(new java.awt.Color(255, 255, 255));
@@ -993,7 +1063,7 @@ public class Principal extends javax.swing.JFrame {
                 jLabel13MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 290, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 290, -1));
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 0));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fondo blanco.jpg"))); // NOI18N
@@ -1488,7 +1558,8 @@ public class Principal extends javax.swing.JFrame {
                 }
 
             }
-            if (label.getName().contains("proceso") && !label.getText().contains("\"") && label.getText().contains("imprimir")) {
+            if (label.getName().contains("proceso") && !
+                    label.getText().contains("\"") && label.getText().contains("imprimir")) {
                 try {
                     fw = new FileWriter(archivo, true);
                     bw = new BufferedWriter(fw);
@@ -1597,6 +1668,8 @@ public class Principal extends javax.swing.JFrame {
         jd_vercodigo.setModal(true);
         jd_vercodigo.setLocationRelativeTo(jd_flujos);
         jd_vercodigo.setVisible(true);
+        
+        
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -1609,10 +1682,11 @@ public class Principal extends javax.swing.JFrame {
             BufferedImage image = new BufferedImage(d.width, d.height, BufferedImage.TYPE_INT_RGB);
             jp_flujo.paint(image.getGraphics());
             try {
+                
                 ImageIO.write(image, "png", new File(jfc.getSelectedFile().getPath() + ".png"));
                 ruta = jfc.getSelectedFile().getPath();
                 System.out.println(ruta);
-
+                
             } catch (IOException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1800,7 +1874,7 @@ public class Principal extends javax.swing.JFrame {
         jl_padre.setModel(modelo1);
         jl_hija.setModel(modelo2);
         selec = clase;
-        clase.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        selec.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 selec = clase;
                 selec.setLocation(selec.getLocation().x + evt.getX() - selec.getWidth() / 2,
@@ -1913,7 +1987,9 @@ public class Principal extends javax.swing.JFrame {
 
             }
         }
+        selec.revalidate();
         selec.repaint();
+        jp_uml.revalidate();
         jp_uml.repaint();
         jd_atributos.dispose();
         tf_atributo.setText("");
@@ -1992,14 +2068,54 @@ public class Principal extends javax.swing.JFrame {
         if (op == JFileChooser.APPROVE_OPTION) {
             administrarUML au = new administrarUML(jfc.getSelectedFile().getPath());
             au.cargarArchivo();
-            for (claseCreada clase : au.getClases()) {
+            for (final claseCreada clase : au.getClases()) {
                 clases.add(clase);
-                System.out.println(clase.toString());
-            }
-            jp_uml.repaint();
-            jButton9.setEnabled(true);
-            JOptionPane.showMessageDialog(jd_UML, "UML cargado exitosamente");
+                jp_uml.add(clase.getClase());
+              
+                clase.getClase().addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+                    public void mouseDragged(java.awt.event.MouseEvent evt) {
+                        selec = clase.getClase();
+                        clase.getClase().setLocation(clase.getClase().getLocation().x + evt.getX() - clase.getClase().getWidth() / 2,
+                                clase.getClase().getLocation().y + evt.getY() - clase.getClase().getHeight() / 2);
+                    }
+                    });
 
+                
+                clase.getClase().addMouseListener(new MouseListener() {
+                    public void mouseClicked(MouseEvent evt) {
+                        selec = clase.getClase();
+                        if (evt.isMetaDown()) {
+                            selec = clase.getClase();
+                            pp_menu3.show(evt.getComponent(), evt.getX(), evt.getY());
+
+                        }
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        selec = clase.getClase();
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        selec = clase.getClase();
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+                        selec = clase.getClase();
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+                        selec = clase.getClase();
+                    }
+                });
+            }
+            JOptionPane.showMessageDialog(jd_UML, "UML cargado exitosamente");
+            jp_uml.revalidate();
+            jp_uml.repaint();
+            
         }
 
     }//GEN-LAST:event_jMenuItem11ActionPerformed
@@ -2205,6 +2321,19 @@ public class Principal extends javax.swing.JFrame {
                     bw.write("\n");
                     bw.write("#endif");
                     bw.write("\n");
+                    bw.write("\n");
+                    bw.write("#include <iostream>");
+                    bw.write("\n");
+                    bw.write("#include"+'\"'+clase.getLista().get(0).getText()+".cpp"+'\"');
+                    bw.write("\n");
+                    bw.write("using namespace std;");
+                    bw.write("\n");
+                    bw.write("int main(){");
+                    bw.write("\n");
+                    bw.write(" return 0;");
+                    bw.write("\n");
+                    bw.write("}");
+                    bw.write("\n");
                     bw.write("----------------------------------------------------------------");
                     bw.write("\n");
                     bw.write("\n");
@@ -2233,6 +2362,53 @@ public class Principal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        labels.removeAll(labels);
+        jp_flujo.removeAll();
+        jp_flujo.repaint();
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jp_flujoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_flujoMouseClicked
+        if(evt.isMetaDown()){
+            pp_menu4.show(evt.getComponent(),evt.getX(),evt.getY());
+            
+        }
+    }//GEN-LAST:event_jp_flujoMouseClicked
+
+    private void copiar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copiar1ActionPerformed
+        pegar.add(seleccionado);
+        JOptionPane.showMessageDialog(jd_flujos,"copiado");
+    }//GEN-LAST:event_copiar1ActionPerformed
+
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        for (JLabel label : pegar) { 
+            labels.add(label);
+            jp_flujo.add(label);
+            jp_flujo.repaint();
+        }
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+        claseCreada cc=new claseCreada(selec);
+        pegar1.add(cc.getClase());
+        JOptionPane.showMessageDialog(jd_UML,"copiado");
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+    private void jp_umlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jp_umlMouseClicked
+      if(evt.isMetaDown()){
+          pp_menu5.show(evt.getComponent(),evt.getX(),evt.getY());
+      }
+    }//GEN-LAST:event_jp_umlMouseClicked
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        for (JPanel panel : pegar1) {
+            jp_uml.add(panel);
+            claseCreada cc=new claseCreada(panel);
+            jp_uml.revalidate();
+            jp_uml.repaint();
+        }
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2278,11 +2454,16 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem cambiar_fuente1;
     private javax.swing.JMenuItem cambiar_texto;
     private javax.swing.JComboBox<Integer> combo;
+    private javax.swing.JMenuItem copiar1;
     private javax.swing.JMenuItem eliminar1;
     private javax.swing.JMenuItem eliminar2;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -2340,7 +2521,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -2383,6 +2567,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu pp_menu1;
     private javax.swing.JPopupMenu pp_menu2;
     private javax.swing.JPopupMenu pp_menu3;
+    private javax.swing.JPopupMenu pp_menu4;
+    private javax.swing.JPopupMenu pp_menu5;
     private javax.swing.JRadioButton rb_double;
     private javax.swing.JRadioButton rb_int;
     private javax.swing.JRadioButton rb_private;
@@ -2407,6 +2593,13 @@ public class Principal extends javax.swing.JFrame {
     DefaultListModel dlm;
     String[] fuentes;
     String ruta;
+    int contcopiar=0;
+    int contcopiar1=0;
+    ArrayList<JLabel>pegar=new ArrayList();
+    ArrayList<JPanel>pegar1=new ArrayList();
+    JPanel copiarpanel1;
+    JPanel copiarpanel2;
+    JPanel copiarpanel3;
     int contpos1 = 0;
     int contatri = 0;
 

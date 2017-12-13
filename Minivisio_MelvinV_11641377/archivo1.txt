@@ -1,6 +1,6 @@
 #include<iostream>
 #include <string>
-ifndef PERSONA_CPP
+#ifndef PERSONA_CPP
 #define PERSONA_CPP
 using namespace std;
 class Persona{
@@ -20,6 +20,13 @@ class Persona{
       peso=decimal;
       nombre=cadena;
  }
+};
+#endif
+#include <iostream>
+include"Persona"
+using namespace std
+int main(){
+ return 0;
 }
 ----------------------------------------------------------------
 
@@ -30,21 +37,91 @@ class Persona{
 using namespace std;
 class Carro{
  private:
-   double velocidad;
  protected:
-   string marca;
  public:
-   int id;
+   int velocidad;
   Carro(){
-     id=1;
      velocidad=1;
-     marca="Hola";
   }
   Carro(int valor,double decimal,string cadena){
-      id=valor;
-      velocidad=decimal;
-      marca=cadena;
+      velocidad=valor;
  }
+};
+#endif
+#include <iostream>
+include"Carro.cpp"
+using namespace std
+int main(){
+ return 0;
+}
+----------------------------------------------------------------
+
+#include<iostream>
+#include <string>
+#ifndef LOL_CPP
+#define LOL_CPP
+using namespace std;
+class lol{
+ private:
+ protected:
+ public:
+  lol(){
+  }
+  lol(int valor,double decimal,string cadena){
+ }
+};
+#endif
+#include <iostream>
+#include"lol.cpp"
+using namespace std;
+int main(){
+ return 0;
+}
+----------------------------------------------------------------
+
+#include<iostream>
+#include <string>
+#ifndef HOLA_CPP
+#define HOLA_CPP
+using namespace std;
+class hola{
+ private:
+ protected:
+ public:
+  hola(){
+  }
+  hola(int valor,double decimal,string cadena){
+ }
+};
+#endif
+#include <iostream>
+#include"hola.cpp"
+using namespace std;
+int main(){
+ return 0;
+}
+----------------------------------------------------------------
+
+#include<iostream>
+#include <string>
+#ifndef HOLA_CPP
+#define HOLA_CPP
+using namespace std;
+class hola{
+ private:
+ protected:
+ public:
+  hola(){
+  }
+  hola(int valor,double decimal,string cadena){
+ }
+};
+#endif
+#include <iostream>
+#include"hola.cpp"
+using namespace std;
+int main(){
+ return 0;
 }
 ----------------------------------------------------------------
 
