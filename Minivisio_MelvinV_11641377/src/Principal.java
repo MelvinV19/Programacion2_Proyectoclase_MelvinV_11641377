@@ -71,8 +71,8 @@ public class Principal extends javax.swing.JFrame {
         jb_datos = new javax.swing.JButton();
         jp_flujo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -93,7 +93,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jd_UML = new javax.swing.JDialog();
-        jButton6 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jp_uml = new javax.swing.JPanel();
@@ -174,14 +173,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
-        jd_herencia = new javax.swing.JDialog();
-        jLabel33 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jl_padre = new javax.swing.JList<>();
-        jLabel34 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jl_hija = new javax.swing.JList<>();
-        jButton7 = new javax.swing.JButton();
         jd_vercodigo1 = new javax.swing.JDialog();
         jScrollPane5 = new javax.swing.JScrollPane();
         tp_codigo1 = new javax.swing.JTextPane();
@@ -283,12 +274,12 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setText("Procesos");
         jd_flujos.getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 72, -1, -1));
 
+        jLabel4.setText("Inicio o fin");
+        jd_flujos.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 103, -1, -1));
+
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Conectores");
         jd_flujos.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 381, -1, -1));
-
-        jLabel4.setText("Inicio o fin");
-        jd_flujos.getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 103, -1, -1));
 
         jLabel5.setText("Decision");
         jd_flujos.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
@@ -390,14 +381,6 @@ public class Principal extends javax.swing.JFrame {
 
         jd_UML.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton6.setText("Herencia");
-        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton6MouseClicked(evt);
-            }
-        });
-        jd_UML.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 140, 70));
-
         jButton3.setText("Crear Clase");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -417,7 +400,7 @@ public class Principal extends javax.swing.JFrame {
                 jButton9MouseClicked(evt);
             }
         });
-        jd_UML.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 140, 80));
+        jd_UML.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 140, 80));
 
         jp_uml.setBackground(new java.awt.Color(255, 255, 255));
         jp_uml.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -784,6 +767,11 @@ public class Principal extends javax.swing.JFrame {
                 jButton8MouseClicked(evt);
             }
         });
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_fuenteLayout = new javax.swing.GroupLayout(jd_fuente.getContentPane());
         jd_fuente.getContentPane().setLayout(jd_fuenteLayout);
@@ -933,56 +921,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pp_menu3.add(jMenuItem13);
-
-        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel33.setText("Clase Padre");
-
-        jl_padre.setModel(new DefaultListModel());
-        jScrollPane3.setViewportView(jl_padre);
-
-        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel34.setText("Clase Hija");
-
-        jl_hija.setModel(new DefaultListModel());
-        jScrollPane4.setViewportView(jl_hija);
-
-        jButton7.setText("Heredar");
-
-        javax.swing.GroupLayout jd_herenciaLayout = new javax.swing.GroupLayout(jd_herencia.getContentPane());
-        jd_herencia.getContentPane().setLayout(jd_herenciaLayout);
-        jd_herenciaLayout.setHorizontalGroup(
-            jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_herenciaLayout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel33)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addGroup(jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel34)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(147, 147, 147))
-        );
-        jd_herenciaLayout.setVerticalGroup(
-            jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jd_herenciaLayout.createSequentialGroup()
-                .addGroup(jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jd_herenciaLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel34))
-                        .addGap(18, 18, 18)
-                        .addGroup(jd_herenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                            .addComponent(jScrollPane4)))
-                    .addGroup(jd_herenciaLayout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
 
         jScrollPane5.setViewportView(tp_codigo1);
 
@@ -1224,7 +1162,7 @@ public class Principal extends javax.swing.JFrame {
 
         jp_flujo.add(jl_proceso);
         jl_proceso.setLocation(10, 200);
-        jl_proceso.setIcon(new ImageIcon(".\\UML\\Proceso.png"));
+            jl_proceso.setIcon(new ImageIcon(".\\UML\\Proceso.png"));
         jl_proceso.setText("");
         labels.add(jl_proceso);
         jl_proceso.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -1848,8 +1786,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        DefaultListModel modelo1 = (DefaultListModel) jl_padre.getModel();
-        DefaultListModel modelo2 = (DefaultListModel) jl_hija.getModel();
+        
         String nombre = JOptionPane.showInputDialog("Ingrese nombre de la clase");
         final JPanel clase;
         clase = new JPanel();
@@ -1868,13 +1805,9 @@ public class Principal extends javax.swing.JFrame {
         claseCreada cc = new claseCreada(clase);
         clases.add(cc);
         cc.getLista().add(titulo);
-        modelo1.addElement(cc);
-        modelo2.addElement(cc);
-
-        jl_padre.setModel(modelo1);
-        jl_hija.setModel(modelo2);
+        
         selec = clase;
-        selec.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        clase.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 selec = clase;
                 selec.setLocation(selec.getLocation().x + evt.getX() - selec.getWidth() / 2,
@@ -1882,7 +1815,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        selec.addMouseListener(new MouseListener() {
+        clase.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent evt) {
                 selec = clase;
@@ -2051,6 +1984,7 @@ public class Principal extends javax.swing.JFrame {
             administrarUML au = new administrarUML(jfc.getSelectedFile().getPath() + ".UML");
             for (claseCreada clase : clases) {
                 au.getClases().add(clase);
+      
             }
             au.cargarArchivo();
             try {
@@ -2119,13 +2053,6 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-
-    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        jd_herencia.pack();
-        jd_herencia.setModal(true);
-        jd_herencia.setLocationRelativeTo(jd_UML);
-        jd_herencia.setVisible(true);
-    }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -2410,6 +2337,10 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2465,8 +2396,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -2495,8 +2424,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
@@ -2537,8 +2464,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JButton jb_crearflujo;
@@ -2555,11 +2480,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_atributos;
     private javax.swing.JDialog jd_flujos;
     private javax.swing.JDialog jd_fuente;
-    private javax.swing.JDialog jd_herencia;
     private javax.swing.JDialog jd_vercodigo;
     private javax.swing.JDialog jd_vercodigo1;
-    private javax.swing.JList<String> jl_hija;
-    private javax.swing.JList<String> jl_padre;
     private javax.swing.JPanel jp_flujo;
     private javax.swing.JPanel jp_uml;
     private javax.swing.JList<String> lista;
